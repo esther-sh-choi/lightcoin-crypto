@@ -4,11 +4,9 @@ class Account {
   }
 
   get balance() {
-    let balance = 0;
-    for (let t of this.transactions) {
-      balance += t.value;
-    }
-    return balance;
+    return this.transactions
+      .map((transaction) => transaction.value)
+      .reduce((prev, cur) => prev + cur, 0);
   }
 
   addTransaction(transaction) {
